@@ -1,0 +1,10 @@
+# 데이터 파일
+candidates.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+
+# macOS
+.DS_Store

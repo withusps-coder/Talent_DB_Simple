@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 인재 DB 검색기</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header>
+            <h1>🎯 나만의 인재 DB 검색기</h1>
+            <p class="subtitle">간편하게 후보자를 관리하세요</p>
+        </header>
+
+        <!-- 검색 바 -->
+        <div class="search-section">
+            <input type="text" id="searchInput" placeholder="🔍 이름 또는 스킬로 검색..." />
+            <button onclick="searchCandidates()" class="btn-search">검색</button>
+            <button onclick="loadCandidates()" class="btn-reset">전체보기</button>
+        </div>
+
+        <!-- 통계 카드 -->
+        <div class="stats-card">
+            <div class="stat-item">
+                <span class="stat-number" id="totalCount">0</span>
+                <span class="stat-label">총 후보자</span>
+            </div>
+        </div>
+
+        <!-- 후보자 등록 폼 -->
+        <div class="form-card">
+            <h2>📝 새 후보자 등록</h2>
+            <form id="candidateForm" onsubmit="addCandidate(event)">
+                <div class="form-group">
+                    <label for="name">이름 *</label>
+                    <input type="text" id="name" required placeholder="홍길동">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact">연락처 *</label>
+                    <input type="text" id="contact" required placeholder="010-1234-5678">
+                </div>
+                
+                <div class="form-group">
+                    <label for="skills">핵심 스킬</label>
+                    <input type="text" id="skills" placeholder="Python, JavaScript, React">
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">연차</label>
+                    <input type="text" id="experience" placeholder="3년">
+                </div>
+                
+                <button type="submit" class="btn-submit">✨ 등록하기</button>
+            </form>
+        </div>
+
+        <!-- 후보자 목록 -->
+        <div class="list-section">
+            <h2>📋 후보자 목록</h2>
+            <div id="candidateList" class="candidate-list">
+                <!-- 동적으로 채워짐 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 토스트 알림 -->
+    <div id="toast" class="toast"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
